@@ -1,6 +1,8 @@
 #ifndef DOUBLY_LINKED_LIST_H
 #define DOUBLY_LINKED_LIST_H
 
+#include <iostream>
+
 template <typename T>
 class DoublyLinkedList {
 private:
@@ -25,8 +27,24 @@ public:
     void DeleteFromTail();
     void DeleteAll();
     void Show() const;
+
+    void InsertAtPosition(int position, T value);
+    void DeleteAtPosition(int position);
+    Node* Find(T value) const;
+    int Replace(T oldValue, T newValue);
+    void Reverse();
 };
 
-#include "DoublyLinkedList.cpp" 
+template <typename T>
+DoublyLinkedList<T>::Node::Node(T value) : data(value), prev(nullptr), next(nullptr) {}
+
+template <typename T>
+DoublyLinkedList<T>::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
+
+template <typename T>
+DoublyLinkedList<T>::~DoublyLinkedList() {
+    DeleteAll();
+}
+
 
 #endif 
